@@ -10,17 +10,6 @@ public class App {
         {"w", "w", "w", "w", "w", "w", "w", "w", "w"}
     };
 
-    //Array for move focused design
-    static String[][] cubeM = {
-        {"w", "w", "w", "b", "b", "b", "g", "g", "g", "y", "y", "y"},
-        {"w", "w", "w", "b", "b", "b", "g", "g", "g", "y", "y", "y"},
-        {"o", "o", "o", "w", "w", "w", "r", "r", "r", "y", "y", "y"},
-        {"o", "o", "o", "w", "w", "w", "r", "r", "r", "y", "y", "y"},
-        {"o", "o", "o", "b", "b", "b", "r", "r", "r", "g", "g", "g"},
-        {"o", "o", "o", "b", "b", "b", "r", "r", "r", "g", "g", "g"}
-    };
-
-
     //Prints cube from a 2D face centric array representation
     static void printCube(String[][] cube) {
         int three = 0;
@@ -108,15 +97,15 @@ public class App {
     }
 
     static void d(String[][] cube) {
-        //TODO
-        //expected result of 'd' from goal state:
         /*
-        rrr     bbb     ooo     ggg     yyy     www
-        rrr     bbb     ooo     ggg     yyy     www
-        bbb     ooo     ggg     rrr     yyy     www
+            expected result of 'd' from goal state:
+            rrr     bbb     ooo     ggg     yyy     www
+            rrr     bbb     ooo     ggg     yyy     www
+            bbb     ooo     ggg     rrr     yyy     www
         */
+
         //white face rotation
-        //might want to make a function for face rotation to pass in the index for which face to rotate
+        //might want to make a function for face rotation
         String temp = "";
         temp = cube[5][0];
         cube[5][0] = cube[5][0];
@@ -146,6 +135,5 @@ public class App {
         printCube(cube);
         d(cube);
         printCube(cube);
-        //printCubeM(cubeM);
     }
 }
