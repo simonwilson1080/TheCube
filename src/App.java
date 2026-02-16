@@ -20,7 +20,7 @@ public class App {
      * BBBBBBBBBBBB
      * 4 corner colors are duplicated in this instance.
      * need to find a way to print this
-     * then hard code the movements to find patterns.
+     * then find patterns in the movements
     ************************************/
 
     //Prints cube from a 2D array representation
@@ -59,7 +59,6 @@ public class App {
         
         //hard coded yellow face rotation
         //make this a loop
-        //TODO
         String temp = "";
 
         temp = cube[4][0];
@@ -74,10 +73,8 @@ public class App {
         cube[4][7] = cube[4][5];
         cube[4][1] = temp;
 
-
-        //Edge sliding hard coded
-        //try making this a loop too
-        //TODO
+        //'U' Edge slide hard coded
+        /*
         String temp1 = "";
         String temp2 = "";
         String temp3 = "";
@@ -100,6 +97,15 @@ public class App {
         cube[1][0] = temp1;
         cube[1][1] = temp2;
         cube[1][2] = temp3;
+        */
+
+        for (int i = 0; i < 3; i++) { //loop equivalent
+            temp = cube[0][i];
+            cube[0][i] = cube[3][i];
+            cube[3][i] = cube[2][i];
+            cube[2][i] = cube[1][i];
+            cube[1][i] = temp;
+        }
     }
 
     public static void main(String[] args) throws Exception {
