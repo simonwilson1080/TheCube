@@ -10,21 +10,35 @@ public class App {
         {"w", "w", "w", "w", "w", "w", "w", "w", "w"}
     };
 
-    /************************************
-     * I want to try using the composite representation too.
-     * Looks like this:
-     * WWWWWWWWWWWW
-     * GGGOOOYYYRRR
-     * GGGOOOYYYRRR
-     * GGGOOOYYYRRR
-     * BBBBBBBBBBBB
-     * 4 corner colors are duplicated in this instance.
-     * need to find a way to print this
-     * then find patterns in the movements
-    ************************************/
+    //Array for move focused design
+    static String[][] cubeM = {
+        {"w", "w", "w", "b", "b", "b", "g", "g", "g", "y", "y", "y"},
+        {"w", "w", "w", "b", "b", "b", "g", "g", "g", "y", "y", "y"},
+        {"o", "o", "o", "w", "w", "w", "r", "r", "r", "y", "y", "y"},
+        {"o", "o", "o", "w", "w", "w", "r", "r", "r", "y", "y", "y"},
+        {"o", "o", "o", "b", "b", "b", "r", "r", "r", "g", "g", "g"},
+        {"o", "o", "o", "b", "b", "b", "r", "r", "r", "g", "g", "g"}
+    };
 
-    //Prints cube from a 2D array representation
+
+    //Prints cube from a 2D face centric array representation
     static void printCube(String[][] cube) {
+        int three = 0;
+        for(int i = 0; i < cube.length; i++) {
+            for(int j = 0; j < cube[0].length; j++) {
+                System.out.print(cube[i][j]);
+                three++;
+                if(three == 3) {
+                    System.out.println();
+                    three = 0;
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    //Prints cube from the move focused array representation
+    static void printCubeM(String[][] cube) {
         int three = 0;
         for(int i = 0; i < cube.length; i++) {
             for(int j = 0; j < cube[0].length; j++) {
@@ -99,7 +113,7 @@ public class App {
         cube[1][2] = temp3;
         */
 
-        for (int i = 0; i < 3; i++) { //loop equivalent
+        for(int i = 0; i < 3; i++) { //loop equivalent
             temp = cube[0][i];
             cube[0][i] = cube[3][i];
             cube[3][i] = cube[2][i];
@@ -110,8 +124,9 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        printCube(cube);
-        u(cube);
-        printCube(cube);
+        //printCube(cube);
+        //u(cube);
+        //printCube(cube);
+        printCubeM(cubeM);
     }
 }
