@@ -10,6 +10,19 @@ public class App {
         {"w", "w", "w", "w", "w", "w", "w", "w", "w"}
     };
 
+    /************************************
+     * I want to try using the composite representation too.
+     * Looks like this:
+     * WWWWWWWWWWWW
+     * GGGOOOYYYRRR
+     * GGGOOOYYYRRR
+     * GGGOOOYYYRRR
+     * BBBBBBBBBBBB
+     * 4 corner colors are duplicated in this instance.
+     * need to find a way to print this
+     * then hard code the movements to find patterns.
+    ************************************/
+
     //Prints cube from a 2D array representation
     static void printCube(String[][] cube) {
         int three = 0;
