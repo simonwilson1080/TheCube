@@ -26,9 +26,29 @@ public class App {
         }
     }
 
+    static void rotateFace(String[][] cube, int face) {
+        /*
+            Helper function for rotating a face of the cube during a turn
+        */
+
+        String temp = "";
+
+        temp = cube[face][0];
+        cube[face][0] = cube[face][6];
+        cube[face][6] = cube[face][8];
+        cube[face][8] = cube[face][2];
+        cube[face][2] = temp;
+
+        temp = cube[face][1];
+        cube[face][1] = cube[face][3];
+        cube[face][3] = cube[face][7];
+        cube[face][7] = cube[face][5];
+        cube[face][1] = temp;
+    }
+
     static void u(String[][] cube) {
         /*
-            Function for interpreting the UP move of the cube for 2D array
+            Function for interpreting the U move
             From goal state, 'u' should produce:
             ggg     rrr     bbb     ooo     yyy     www
             rrr     bbb     ooo     ggg     yyy     www
@@ -44,21 +64,8 @@ public class App {
             (r-0, b-1, o-2, g-3, y-4, w-5) indexes for colors
         */
 
-        //hard coded yellow face rotation
-        //make this a loop
-        String temp = "";
-
-        temp = cube[4][0];
-        cube[4][0] = cube[4][0];
-        cube[4][6] = cube[4][6];
-        cube[4][8] = cube[4][8];
-        cube[4][2] = temp;
-
-        temp = cube[4][1];
-        cube[4][1] = cube[4][3];
-        cube[4][3] = cube[4][7];
-        cube[4][7] = cube[4][5];
-        cube[4][1] = temp;
+        //Yellow face rotation
+        rotateFace(cube, 4);
 
         /*
         'U' edge slide hard coded
@@ -88,7 +95,7 @@ public class App {
         */
 
         for(int i = 0; i < 3; i++) { //loop equivalent
-            temp = cube[0][i];
+            String temp = cube[0][i];
             cube[0][i] = cube[3][i];
             cube[3][i] = cube[2][i];
             cube[2][i] = cube[1][i];
@@ -98,6 +105,7 @@ public class App {
 
     static void d(String[][] cube) {
         /*
+            Function for interpreting D move
             expected result of 'd' from goal state:
             rrr     bbb     ooo     ggg     yyy     www
             rrr     bbb     ooo     ggg     yyy     www
@@ -106,22 +114,11 @@ public class App {
 
         //white face rotation
         //might want to make a function for face rotation
-        String temp = "";
-        temp = cube[5][0];
-        cube[5][0] = cube[5][0];
-        cube[5][6] = cube[5][6];
-        cube[5][8] = cube[5][8];
-        cube[5][2] = temp;
-
-        temp = cube[5][1];
-        cube[5][1] = cube[5][3];
-        cube[5][3] = cube[5][7];
-        cube[5][7] = cube[5][5];
-        cube[5][1] = temp;
+        rotateFace(cube, 5);
 
         //D edge slide
         for(int i = 0; i < 3; i++) {
-            temp = cube[0][6+i];
+            String temp = cube[0][6+i];
             cube[0][6+i] = cube[1][6+i];
             cube[1][6+i] = cube[2][6+i];
             cube[2][6+i] = cube[3][6+i];
