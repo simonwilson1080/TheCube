@@ -27,9 +27,7 @@ public class App {
     }
 
     static void rotateFace(String[][] cube, int face) {
-        /*
-            Helper function for rotating a face of the cube during a turn
-        */
+        //Helper function for rotating a face of the cube during a turn
 
         String temp = "";
 
@@ -48,24 +46,14 @@ public class App {
 
     static void u(String[][] cube) {
         /*
-            Function for interpreting the U move
-            From goal state, 'u' should produce:
+            Function for U turn
+            From goal state, 'U' should produce:
             ggg     rrr     bbb     ooo     yyy     www
             rrr     bbb     ooo     ggg     yyy     www
             rrr     bbb     ooo     ggg     yyy     www
-            or
-            gggrrrrrr
-            rrrbbbbbb
-            bbboooooo
-            ooogggggg
-            yyyyyyyyy
-            wwwwwwwww
             Remember to implement face rotations too. important for yellow in this case.
             (r-0, b-1, o-2, g-3, y-4, w-5) indexes for colors
         */
-
-        //Yellow face rotation
-        rotateFace(cube, 4);
 
         /*
         'U' edge slide hard coded
@@ -94,7 +82,10 @@ public class App {
         cube[1][2] = temp3;
         */
 
-        for(int i = 0; i < 3; i++) { //loop equivalent
+        //Yellow face rotation
+        rotateFace(cube, 4);
+
+        for(int i = 0; i < 3; i++) { //loop equivalent edge slide
             String temp = cube[0][i];
             cube[0][i] = cube[3][i];
             cube[3][i] = cube[2][i];
@@ -105,8 +96,8 @@ public class App {
 
     static void d(String[][] cube) {
         /*
-            Function for interpreting D move
-            expected result of 'd' from goal state:
+            Function for  D turn
+            expected result of 'D' from goal state:
             rrr     bbb     ooo     ggg     yyy     www
             rrr     bbb     ooo     ggg     yyy     www
             bbb     ooo     ggg     rrr     yyy     www
@@ -127,10 +118,70 @@ public class App {
 
     }
 
+    static void r(String[][] cube) {
+        /*
+            Function for R turn
+            expected result of 'R' from goal state:
+            rrr     bbb     ooo     ggg     yyy     www
+            rrr     bbb     ooo     ggg     yyy     www
+            bbb     ooo     ggg     rrr     yyy     www
+        */
+
+        //Red face rotation
+        rotateFace(cube, 0);
+
+        //R edge slide
+    }
+
+    static void l(String[][] cube) {
+        /*
+            Function for L turn
+            expected result of 'L' from goal state:
+            rrr     bbb     ooo     ggg     yyy     www
+            rrr     bbb     ooo     ggg     yyy     www
+            bbb     ooo     ggg     rrr     yyy     www
+        */
+
+        //Orange face rotation
+        rotateFace(cube, 2);
+
+        //L edge slide
+    }
+
+    static void f(String[][] cube) {
+        /*
+            Function for F turn
+            expected result of 'F' from goal state:
+            rrr     bbb     ooo     ggg     yyy     www
+            rrr     bbb     ooo     ggg     yyy     www
+            bbb     ooo     ggg     rrr     yyy     www
+        */
+
+        //Blue face rotation
+        rotateFace(cube, 1);
+
+        //F edge slide
+    }
+
+    static void b(String[][] cube) {
+        /*
+            Function for B turn
+            expected result of 'B' from goal state:
+            rrr     bbb     ooo     ggg     yyy     www
+            rrr     bbb     ooo     ggg     yyy     www
+            bbb     ooo     ggg     rrr     yyy     www
+        */
+
+        //Green face rotation
+        rotateFace(cube, 3);
+
+        //B edge slide
+    }
+
     public static void main(String[] args) throws Exception {
 
+        r(cube);
         printCube(cube);
-        d(cube);
-        printCube(cube);
+        
     }
 }
