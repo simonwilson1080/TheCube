@@ -122,9 +122,9 @@ public class App {
         /*
             Function for R turn
             expected result of 'R' from goal state:
-            rrr     bbb     ooo     ggg     yyy     www
-            rrr     bbb     ooo     ggg     yyy     www
-            bbb     ooo     ggg     rrr     yyy     www
+            rrr     bbw     ooo     ygg     yyy     wwg
+            rrr     bbw     ooo     ygg     yyy     wwg
+            rrr     bbw     ooo     ygg     yyy     wwg
         */
 
         //Red face rotation
@@ -137,9 +137,9 @@ public class App {
         /*
             Function for L turn
             expected result of 'L' from goal state:
-            rrr     bbb     ooo     ggg     yyy     www
-            rrr     bbb     ooo     ggg     yyy     www
-            bbb     ooo     ggg     rrr     yyy     www
+            rrr     ybb     ooo     ggw     gyy     bww
+            rrr     ybb     ooo     ggw     gyy     bww
+            rrr     ybb     ooo     ggw     gyy     bww
         */
 
         //Orange face rotation
@@ -152,9 +152,9 @@ public class App {
         /*
             Function for F turn
             expected result of 'F' from goal state:
-            rrr     bbb     ooo     ggg     yyy     www
-            rrr     bbb     ooo     ggg     yyy     www
-            bbb     ooo     ggg     rrr     yyy     www
+            yrr     bbb     oow     ggg     yyy     rww
+            yrr     bbb     oow     ggg     yyy     rww
+            yrr     bbb     oow     ggg     ooo     rww
         */
 
         //Blue face rotation
@@ -167,9 +167,9 @@ public class App {
         /*
             Function for B turn
             expected result of 'B' from goal state:
-            rrr     bbb     ooo     ggg     yyy     www
-            rrr     bbb     ooo     ggg     yyy     www
-            bbb     ooo     ggg     rrr     yyy     www
+            rrw     bbb     yoo     ggg     rrr     wwo
+            rrw     bbb     yoo     ggg     yyy     wwo
+            rrw     bbb     yoo     ggg     yyy     wwo
         */
 
         //Green face rotation
@@ -182,6 +182,6 @@ public class App {
 
         r(cube);
         printCube(cube);
-        
+
     }
 }
