@@ -131,6 +131,32 @@ public class App {
         rotateFace(cube, 0);
 
         //R edge slide
+        // 2, 5, 8 
+        String temp1 = "";
+        String temp2 = "";
+        String temp3 = "";
+        temp1 = cube[1][2];
+        temp2 = cube[1][5];
+        temp3 = cube[1][8];
+        //right side of blue face becomes right side of white face
+        cube[1][2] = cube[5][2];
+        cube[1][5] = cube[5][5];
+        cube[1][8] = cube[5][8];
+        //right side of white becomes left side of green
+        cube[5][2] = cube[3][2];
+        cube[5][5] = cube[3][5];
+        cube[5][8] = cube[3][8];
+        //left side of green becomes right side of yellow
+        cube[3][0] = cube[4][2];
+        cube[3][3] = cube[4][5];
+        cube[3][6] = cube[4][8];
+        //right side of yellow becomes right side of blue(temp)
+        cube[4][2] = temp1;
+        cube[4][5] = temp2;
+        cube[4][8] = temp3;
+
+        //I'm having to hard code the moves for this turn since I believe that the indexes are
+        //slightly different for each face based off of orientation, but I'm not sure.
     }
 
     static void l(String[][] cube) {
@@ -182,6 +208,13 @@ public class App {
 
         r(cube);
         printCube(cube);
+
+        //TODO
+        /*
+            Make switch statement to handle command line input.
+            Loop until user inputs something that breaks the loop.
+            Output cube after each turn / after a set of turns.
+        */
 
     }
 }
