@@ -122,16 +122,16 @@ public class App {
         /*
             Function for R turn
             expected result of 'R' from goal state:
-            rrr     bbw     ooo     ygg     yyy     wwg
-            rrr     bbw     ooo     ygg     yyy     wwg
-            rrr     bbw     ooo     ygg     yyy     wwg
+            rrr     bbw     ooo     ygg     yyb     wwg
+            rrr     bbw     ooo     ygg     yyb     wwg
+            rrr     bbw     ooo     ygg     yyb     wwg
         */
 
         //Red face rotation
         rotateFace(cube, 0);
 
         //R edge slide
-        // 2, 5, 8 
+        //If I make this a loop, I might need to isolate green and yellow.
         String temp1 = "";
         String temp2 = "";
         String temp3 = "";
@@ -172,6 +172,30 @@ public class App {
         rotateFace(cube, 2);
 
         //L edge slide
+        String temp1 = "";
+        String temp2 = "";
+        String temp3 = "";
+        temp1 = cube[1][0];
+        temp2 = cube[1][3];
+        temp3 = cube[1][6];
+        //left side of blue face becomes left side of yellow face
+        cube[1][0] = cube[4][0];
+        cube[1][3] = cube[4][3];
+        cube[1][6] = cube[4][6];
+        //left side of yellow becomes right side of green
+        cube[4][0] = cube[3][2];
+        cube[4][3] = cube[3][5];
+        cube[4][6] = cube[3][8];
+        //right side of green becomes left side of white
+        cube[3][2] = cube[5][0];
+        cube[3][5] = cube[5][3];
+        cube[3][8] = cube[5][6];
+        //left side of white becomes left side of blue(temp)
+        cube[5][0] = temp1;
+        cube[5][3] = temp2;
+        cube[5][6] = temp3;
+
+        //I'm not liking this much
     }
 
     static void f(String[][] cube) {
