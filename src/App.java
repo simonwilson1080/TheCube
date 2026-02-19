@@ -275,9 +275,51 @@ public class App {
         cube[4][2] = temp3;
     }
 
+    static void uPrime(String[][] cube) {
+        //call U 3 times
+        u(cube);
+        u(cube);
+        u(cube);
+    }
+
+    static void dPrime(String[][] cube) {
+        //call D 3 times
+        d(cube);
+        d(cube);
+        d(cube);
+    }
+
+    static void rPrime(String[][] cube) {
+        //call R 3 times
+        r(cube);
+        r(cube);
+        r(cube);
+    }
+
+    static void lPrime(String[][] cube) {
+        //call L 3 times
+        l(cube);
+        l(cube);
+        l(cube);
+    }
+
+    static void fPrime(String[][] cube) {
+        //call F 3 times
+        f(cube);
+        f(cube);
+        f(cube);
+    }
+
+    static void bPrime(String[][] cube) {
+        //call B 3 times
+        b(cube);
+        b(cube);
+        b(cube);
+    }
+
     public static void main(String[] args) throws Exception {
 
-        f(cube);
+        b(cube);
         printCube(cube);
 
         //TODO
