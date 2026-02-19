@@ -277,44 +277,32 @@ public class App {
 
     static void uPrime(String[][] cube) {
         //call U 3 times
-        u(cube);
-        u(cube);
-        u(cube);
+        u(cube); u(cube); u(cube);
     }
 
     static void dPrime(String[][] cube) {
         //call D 3 times
-        d(cube);
-        d(cube);
-        d(cube);
+        d(cube); d(cube); d(cube);
     }
 
     static void rPrime(String[][] cube) {
         //call R 3 times
-        r(cube);
-        r(cube);
-        r(cube);
+        r(cube); r(cube); r(cube);
     }
 
     static void lPrime(String[][] cube) {
         //call L 3 times
-        l(cube);
-        l(cube);
-        l(cube);
+        l(cube); l(cube); l(cube);
     }
 
     static void fPrime(String[][] cube) {
         //call F 3 times
-        f(cube);
-        f(cube);
-        f(cube);
+        f(cube); f(cube); f(cube);
     }
 
     static void bPrime(String[][] cube) {
         //call B 3 times
-        b(cube);
-        b(cube);
-        b(cube);
+        b(cube); b(cube); b(cube);
     }
 
     public static void main(String[] args) throws Exception {
@@ -325,30 +313,38 @@ public class App {
             Loop until user inputs something that breaks the loop.
             Output cube after scramble
         */
-       String[] turnsArray = {"r", "u"};
 
-       for (String turn : turnsArray) {
-           switch (turn) {
-               case "r":
-                   r(cube);
-                   break;
-               case "l":
-                   l(cube);
-                   break;
-               case "u":
-                   u(cube);
-                   break;
-               case "d":
-                   d(cube);
-                   break;
-               case "f":
-                   f(cube);
-                   break;
-               case "b":
-                   b(cube);
-                   break;
-           }
-       }
+        //test array
+        String[] testArray = {"u", "d", "l", "r", "f", "b"};
+
+        //Populate array with command line arguments
+        String[] clargs = new String[args.length];
+        for(int i = 0; i < args.length; i++) {
+        clargs[i] = args[i];
+        }
+
+        for(String turn : testArray) {
+            switch(turn) {
+                case "r":
+                    r(cube);
+                    break;
+                case "l":
+                    l(cube);
+                    break;
+                case "u":
+                    u(cube);
+                    break;
+                case "d":
+                    d(cube);
+                    break;
+                case "f":
+                    f(cube);
+                    break;
+                case "b":
+                    b(cube);
+                    break;
+            }
+        }
 
        printCube(cube);
 
