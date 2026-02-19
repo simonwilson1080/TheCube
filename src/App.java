@@ -88,7 +88,7 @@ public class App {
         for(int i = 0; i < 3; i++) { //loop equivalent edge slide
             String temp = cube[0][i];
             cube[0][i] = cube[3][i];
-            cube[3][i] = cube[2][i];
+            cube[3][i] = cube[2][i]; //checked to make sure these loops dont break my indexing convention
             cube[2][i] = cube[1][i];
             cube[1][i] = temp;
         }
@@ -242,15 +242,37 @@ public class App {
         /*
             Function for B turn
             expected result of 'B' from goal state:
-            rrw     bbb     yoo     ggg     rrr     wwo
-            rrw     bbb     yoo     ggg     yyy     wwo
-            rrw     bbb     yoo     ggg     yyy     wwo
+            rrw     bbb     yoo     ggg     rrr     www
+            rrw     bbb     yoo     ggg     yyy     www
+            rrw     bbb     yoo     ggg     yyy     ooo
         */
 
         //Green face rotation
         rotateFace(cube, 3);
 
         //B edge slide
+        String temp1 = "";
+        String temp2 = "";
+        String temp3 = "";
+        temp1 = cube[0][2];
+        temp2 = cube[0][5];
+        temp3 = cube[0][8];
+        //right side of red face becomes bottom side of white
+        cube[0][2] = cube[5][8];
+        cube[0][5] = cube[5][7];
+        cube[0][8] = cube[5][6];
+        //bottom side of white becomes left side of orange
+        cube[5][6] = cube[2][0];
+        cube[5][7] = cube[2][3];
+        cube[5][8] = cube[2][6];
+        //left side of orange becomes top side of yellow
+        cube[2][0] = cube [4][2];
+        cube[2][3] = cube [4][1];
+        cube[2][6] = cube [4][0];
+        //top side of yellow becomes right side of red(temp)
+        cube[4][0] = temp1;
+        cube[4][1] = temp2;
+        cube[4][2] = temp3;
     }
 
     public static void main(String[] args) throws Exception {
