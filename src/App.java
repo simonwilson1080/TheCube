@@ -88,7 +88,7 @@ public class App {
         for(int i = 0; i < 3; i++) { //loop equivalent edge slide
             String temp = cube[0][i];
             cube[0][i] = cube[3][i];
-            cube[3][i] = cube[2][i]; //checked to make sure these loops dont break my indexing convention
+            cube[3][i] = cube[2][i]; //checked to make sure these loops dont break indexing convention
             cube[2][i] = cube[1][i];
             cube[1][i] = temp;
         }
@@ -304,6 +304,22 @@ public class App {
         b(cube); b(cube); b(cube);
     }
 
+    static void solveSeq(String[] testArray) {
+
+        String[] solveArray = new String[testArray.length];
+        
+        for(int i = 0; i < testArray.length; i++) {
+            if(testArray[i].indexOf("'") != -1) {
+                solveArray[i] = testArray[i].substring(0, 1);
+            }
+            else solveArray[i] = testArray[i] +"'";
+        }
+        System.out.print("Solve Sequence: ");
+        for(int i = solveArray.length-1; i >= 0; i--) {
+            System.out.print(solveArray[i] + " ");
+        }
+    }
+
     public static void main(String[] args) throws Exception {
 
         //TODO
@@ -314,7 +330,7 @@ public class App {
         */
 
         //test array
-        String[] testArray = {"u", "d", "l", "r", "f", "b"};
+        String[] testArray = {"u'", "d", "l", "r'", "f", "b"};
 
         //Populate array with command line arguments
         String[] clargs = new String[args.length];
@@ -327,25 +343,49 @@ public class App {
                 case "r":
                     r(cube);
                     break;
+                case "r'":
+                    rPrime(cube);
+                    break;
+
                 case "l":
                     l(cube);
                     break;
+                case "l'":
+                    lPrime(cube);
+                    break;
+
                 case "u":
                     u(cube);
                     break;
+                case "u'":
+                    uPrime(cube);
+                    break;
+
                 case "d":
                     d(cube);
                     break;
+                case "d'":
+                    dPrime(cube);
+                    break;
+
                 case "f":
                     f(cube);
                     break;
+                case "f'":
+                    fPrime(cube);
+                    break;
+
                 case "b":
                     b(cube);
+                    break;
+                case "b'":
+                    bPrime(cube);
                     break;
             }
         }
 
         printCube(cube);
+        solveSeq(testArray);
 
     }
 }
