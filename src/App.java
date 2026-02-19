@@ -56,7 +56,7 @@ public class App {
         */
 
         /*
-        'U' edge slide hard coded
+        'U' edge slide hard coded for visualization
 
         String temp1 = "";
         String temp2 = "";
@@ -115,7 +115,6 @@ public class App {
             cube[2][6+i] = cube[3][6+i];
             cube[3][6+i] = temp;
         }
-
     }
 
     static void r(String[][] cube) {
@@ -319,10 +318,10 @@ public class App {
 
         //Populate array with command line arguments
         String[] clargs = new String[args.length];
-        for(int i = 0; i < args.length; i++) {
-        clargs[i] = args[i];
-        }
+        for(int i = 0; i < args.length; i++)
+            clargs[i] = args[i];
 
+        //call turn functions from array
         for(String turn : testArray) {
             switch(turn) {
                 case "r":
@@ -346,7 +345,7 @@ public class App {
             }
         }
 
-       printCube(cube);
+        printCube(cube);
 
     }
 }
