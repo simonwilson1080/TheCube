@@ -138,7 +138,7 @@ public class App {
         temp1 = cube[1][2];
         temp2 = cube[1][5];
         temp3 = cube[1][8];
-        //right side of blue face becomes right side of white face
+        //right side of blue face becomes right side of white
         cube[1][2] = cube[5][2];
         cube[1][5] = cube[5][5];
         cube[1][8] = cube[5][8];
@@ -178,7 +178,7 @@ public class App {
         temp1 = cube[1][0];
         temp2 = cube[1][3];
         temp3 = cube[1][6];
-        //left side of blue face becomes left side of yellow face
+        //left side of blue face becomes left side of yellow
         cube[1][0] = cube[4][0];
         cube[1][3] = cube[4][3];
         cube[1][6] = cube[4][6];
@@ -195,22 +195,46 @@ public class App {
         cube[5][3] = temp2;
         cube[5][6] = temp3;
 
-        //I'm not liking this much
+        //hmmmmm
     }
 
     static void f(String[][] cube) {
         /*
             Function for F turn
             expected result of 'F' from goal state:
-            yrr     bbb     oow     ggg     yyy     rww
-            yrr     bbb     oow     ggg     yyy     rww
-            yrr     bbb     oow     ggg     ooo     rww
+            yrr     bbb     oow     ggg     yyy     rrr
+            yrr     bbb     oow     ggg     yyy     www
+            yrr     bbb     oow     ggg     ooo     www
         */
 
         //Blue face rotation
         rotateFace(cube, 1);
 
         //F edge slide
+        String temp1 = "";
+        String temp2 = "";
+        String temp3 = "";
+        temp1 = cube[0][0];
+        temp2 = cube[0][3];
+        temp3 = cube[0][6];
+        //left side of red face becomes bottom side of yellow
+        cube[0][0] = cube[4][6];
+        cube[0][3] = cube[4][7];
+        cube[0][6] = cube[4][8];
+        //bottom side of yellow becomes right side of orange
+        cube[4][6] = cube[2][2];
+        cube[4][7] = cube[2][5];
+        cube[4][8] = cube[2][8];
+        //right side of orange becomes top side of white
+        cube[2][2] = cube[5][0];
+        cube[2][5] = cube[5][1];
+        cube[2][8] = cube[5][2];
+        //top side of white becomes left side of red(temp)
+        cube[5][0] = temp1;
+        cube[5][1] = temp2;
+        cube[5][2] = temp3;
+        //Just realized I've been doing this wrong.
+        //temp1 should be assigned to cube[5][2], not [5][0].
     }
 
     static void b(String[][] cube) {
@@ -230,7 +254,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        r(cube);
+        l(cube);
+        l(cube);
         printCube(cube);
 
         //TODO
