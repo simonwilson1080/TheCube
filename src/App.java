@@ -41,7 +41,7 @@ public class App {
         cube[face][1] = cube[face][3];
         cube[face][3] = cube[face][7];
         cube[face][7] = cube[face][5];
-        cube[face][1] = temp;
+        cube[face][5] = temp; //was [1] but should've been [5]
     }
 
     static void u(String[][] cube) {
@@ -319,15 +319,38 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        b(cube);
-        printCube(cube);
-
         //TODO
         /*
             Make switch statement to handle command line input.
             Loop until user inputs something that breaks the loop.
-            Output cube after each turn / after a set of turns.
+            Output cube after scramble
         */
+       String[] turnsArray = {"r", "u"};
+
+       for (String turn : turnsArray) {
+           switch (turn) {
+               case "r":
+                   r(cube);
+                   break;
+               case "l":
+                   l(cube);
+                   break;
+               case "u":
+                   u(cube);
+                   break;
+               case "d":
+                   d(cube);
+                   break;
+               case "f":
+                   f(cube);
+                   break;
+               case "b":
+                   b(cube);
+                   break;
+           }
+       }
+
+       printCube(cube);
 
     }
 }
