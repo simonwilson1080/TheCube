@@ -140,19 +140,19 @@ public class App {
         temp3 = cube[1][8];
         //right side of blue face becomes right side of white
         cube[1][2] = cube[5][2];
-        cube[1][5] = cube[5][5];
+        cube[1][5] = cube[5][5]; //checked
         cube[1][8] = cube[5][8];
         //right side of white becomes left side of green
-        cube[5][2] = cube[3][2];
-        cube[5][5] = cube[3][5];
-        cube[5][8] = cube[3][8];
+        cube[5][2] = cube[3][6];
+        cube[5][5] = cube[3][3]; //checked
+        cube[5][8] = cube[3][0];
         //left side of green becomes right side of yellow
-        cube[3][0] = cube[4][2];
-        cube[3][3] = cube[4][5];
-        cube[3][6] = cube[4][8];
+        cube[3][0] = cube[4][8];
+        cube[3][3] = cube[4][5]; //checked
+        cube[3][6] = cube[4][2];
         //right side of yellow becomes right side of blue(temp)
         cube[4][2] = temp1;
-        cube[4][5] = temp2;
+        cube[4][5] = temp2; //checked
         cube[4][8] = temp3;
 
         //I'm having to hard code the moves for this turn since I believe that the indexes are
@@ -180,19 +180,19 @@ public class App {
         temp3 = cube[1][6];
         //left side of blue face becomes left side of yellow
         cube[1][0] = cube[4][0];
-        cube[1][3] = cube[4][3];
+        cube[1][3] = cube[4][3]; //checked
         cube[1][6] = cube[4][6];
         //left side of yellow becomes right side of green
-        cube[4][0] = cube[3][2];
-        cube[4][3] = cube[3][5];
-        cube[4][6] = cube[3][8];
+        cube[4][0] = cube[3][8];
+        cube[4][3] = cube[3][5]; //checked 
+        cube[4][6] = cube[3][2];
         //right side of green becomes left side of white
-        cube[3][2] = cube[5][0];
-        cube[3][5] = cube[5][3];
-        cube[3][8] = cube[5][6];
+        cube[3][2] = cube[5][6];
+        cube[3][5] = cube[5][3]; //checked
+        cube[3][8] = cube[5][0];
         //left side of white becomes left side of blue(temp)
         cube[5][0] = temp1;
-        cube[5][3] = temp2;
+        cube[5][3] = temp2; //checked
         cube[5][6] = temp3;
 
         //hmmmmm
@@ -219,22 +219,23 @@ public class App {
         temp3 = cube[0][6];
         //left side of red face becomes bottom side of yellow
         cube[0][0] = cube[4][6];
-        cube[0][3] = cube[4][7];
+        cube[0][3] = cube[4][7]; //checked
         cube[0][6] = cube[4][8];
         //bottom side of yellow becomes right side of orange
-        cube[4][6] = cube[2][2];
-        cube[4][7] = cube[2][5];
-        cube[4][8] = cube[2][8];
+        cube[4][6] = cube[2][8];
+        cube[4][7] = cube[2][5]; //checked switch [2][2] and [2][8]
+        cube[4][8] = cube[2][2];
         //right side of orange becomes top side of white
         cube[2][2] = cube[5][0];
-        cube[2][5] = cube[5][1];
+        cube[2][5] = cube[5][1]; //checked
         cube[2][8] = cube[5][2];
         //top side of white becomes left side of red(temp)
-        cube[5][0] = temp1;
+        cube[5][0] = temp3;
         cube[5][1] = temp2;
-        cube[5][2] = temp3;
+        cube[5][2] = temp1;
         //Just realized I've been doing this wrong.
-        //temp1 should be assigned to cube[5][2], not [5][0].
+        //temp1 should be assigned to cube[5][2], not [5][0] and so on.
+        //I will place a comment next to assignments to mark revisited code.
     }
 
     static void b(String[][] cube) {
@@ -254,8 +255,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        l(cube);
-        l(cube);
+        f(cube);
         printCube(cube);
 
         //TODO
