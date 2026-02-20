@@ -1,3 +1,16 @@
+/*****************************************************
+ * Author: Simon Wilson
+ * Description: Colorful 3-Dimensional Cube Puzzle Simulator
+ * 
+ * Compile / run App.java with the basic turn notation as arguments
+ * Example: javac App.java
+ *          java App.java u B r l d L R
+ * 
+ * This performs u, b', r, l, d, l', r'
+ * lowercase for clockwise turns, 
+ * uppercase for counterclockwise or 'prime' turns
+*****************************************************/
+
 public class App {
 
     //Array for 2D face centric representation in its goal state
@@ -193,8 +206,6 @@ public class App {
         cube[5][0] = temp1;
         cube[5][3] = temp2; //checked
         cube[5][6] = temp3;
-
-        //hmmmmm
     }
 
     static void f(String[][] cube) {
@@ -304,20 +315,31 @@ public class App {
         b(cube); b(cube); b(cube);
     }
 
-    static void solveSeq(String[] testArray) {
+    static void solveSeq(String[] turnargs) {
 
-        String[] solveArray = new String[testArray.length];
-        
-        for(int i = 0; i < testArray.length; i++) {
-            if(testArray[i].indexOf("'") != -1) {
-                solveArray[i] = testArray[i].substring(0, 1);
+        String[] solveArray = new String[turnargs.length];
+        String[] reverseSolve = new String[turnargs.length];
+
+        /*****************************************************
+         * This only works if I could get command line args
+         * with multiple character per argument. But I can't,
+         * so I will use lowercase for clockwise and uppercase
+         * for 'prime' turns.
+         * 
+        for(int i = 0; i < turnargs.length; i++) {
+            if(turnargs[i].indexOf("'") != -1) {
+                solveArray[i] = turnargs[i].substring(0, 1);
             }
-            else solveArray[i] = testArray[i] +"'";
+            else solveArray[i] = turnargs[i] + "'";
         }
+        
         System.out.print("Solve Sequence: ");
         for(int i = solveArray.length-1; i >= 0; i--) {
             System.out.print(solveArray[i] + " ");
+            reverseSolve[i] = solveArray[i];
         }
+        System.out.println();
+        *****************************************************/
     }
 
     public static void main(String[] args) throws Exception {
@@ -338,54 +360,52 @@ public class App {
             clargs[i] = args[i];
 
         //call turn functions from array
-        for(String turn : testArray) {
+        for(String turn : clargs) {
             switch(turn) {
                 case "r":
                     r(cube);
                     break;
-                case "r'":
+                case "R":
                     rPrime(cube);
                     break;
 
                 case "l":
                     l(cube);
                     break;
-                case "l'":
+                case "L":
                     lPrime(cube);
                     break;
 
                 case "u":
                     u(cube);
                     break;
-                case "u'":
+                case "U":
                     uPrime(cube);
                     break;
 
                 case "d":
                     d(cube);
                     break;
-                case "d'":
+                case "D":
                     dPrime(cube);
                     break;
 
                 case "f":
                     f(cube);
                     break;
-                case "f'":
+                case "F":
                     fPrime(cube);
                     break;
 
                 case "b":
                     b(cube);
                     break;
-                case "b'":
+                case "B":
                     bPrime(cube);
                     break;
             }
         }
-
         printCube(cube);
-        solveSeq(testArray);
-
+        solveSeq(clargs);
     }
 }
