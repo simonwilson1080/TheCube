@@ -320,9 +320,23 @@ public class App {
         String[] solveArray = new String[turnargs.length];
         String[] reverseSolve = new String[turnargs.length];
 
+        for(int i = 0; i < turnargs.length; i++) {
+            if(Character.isUpperCase(turnargs[i].charAt(0))) {
+                solveArray[i] = turnargs[i].toLowerCase();
+            }
+            else solveArray[i] = turnargs[i].toUpperCase();
+        }
+
+        System.out.print("Solve Sequence: ");
+        for(int i = solveArray.length-1; i >= 0; i--) {
+            System.out.print(solveArray[i] + " ");
+            reverseSolve[i] = solveArray[i];
+        }
+        System.out.println();
+
         /*****************************************************
          * This only works if I could get command line args
-         * with multiple character per argument. But I can't,
+         * with multiple character per argument. But I couldn't,
          * so I will use lowercase for clockwise and uppercase
          * for 'prime' turns.
          * 
